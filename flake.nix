@@ -2,7 +2,6 @@
   inputs = {
     flake-utils.url     = "github:numtide/flake-utils";
     nixpkgs.url         = "github:NixOS/nixpkgs/nixos-unstable";
-    crem.url            = "github:marcosh/crem";
   };
 
   outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
@@ -40,6 +39,7 @@
                 async
                 async-pool
                 stm
+                io-classes
               ]))
             ];
           };
@@ -47,5 +47,3 @@
       }
     );
 }
-
-

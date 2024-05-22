@@ -7,6 +7,7 @@ dependencies:
   - async-pool
   - bytestring
   - containers
+  - io-classes
   - stm
 
 default-extensions:
