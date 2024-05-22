@@ -39,6 +39,7 @@
                 containers
                 async
                 async-pool
+                stm
               ]))
             ];
           };
