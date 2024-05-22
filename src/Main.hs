@@ -65,7 +65,7 @@ close = \case
 finalise :: State -> Maybe State
 finalise = \case
   Closed a -> Just (Final a)
-  -- Final a  -> Just (Final a)
+  Final a  -> Just (Final a)
   _        -> Nothing
 
 {-
