@@ -8,9 +8,8 @@ name:           example
 version:        0.1.0.0
 build-type:     Simple
 
-library
-  exposed-modules:
-      Main
+executable example
+  main-is: Main.hs
   other-modules:
       Paths_example
   hs-source-dirs:
@@ -20,6 +19,7 @@ library
       DeriveGeneric
       DerivingStrategies
       ImportQualifiedPost
+      LambdaCase
       OverloadedStrings
       PackageImports
       ScopedTypeVariables
@@ -31,6 +31,7 @@ library
     , base
     , bytestring
     , containers
+    , hspec
     , io-classes
     , stm
-  default-language: Haskell2010
+  default-language: GHC2021

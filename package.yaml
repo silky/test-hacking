@@ -1,5 +1,6 @@
-name:                example
-version:             0.1.0.0
+name:     example
+version:  0.1.0.0
+language: GHC2021
 
 dependencies:
   - base
@@ -9,12 +10,14 @@ dependencies:
   - containers
   - io-classes
   - stm
+  - hspec
 
 default-extensions:
   - DeriveAnyClass
   - DeriveGeneric
   - DerivingStrategies
   - ImportQualifiedPost
+  - LambdaCase
   - OverloadedStrings
   - PackageImports
   - ScopedTypeVariables
@@ -30,5 +33,6 @@ ghc-options:
 - -Wpartial-fields
 - -Wredundant-constraints
 
-library:
+executable:
   source-dirs: src
+  main-is: Main.hs

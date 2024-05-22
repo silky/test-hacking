@@ -34,12 +34,13 @@
               (hask.ghcWithPackages (ps: with ps; [
                 HUnit
                 QuickCheck
-                bytestring
-                containers
                 async
                 async-pool
-                stm
+                bytestring
+                containers
+                hspec
                 io-classes
+                stm
               ]))
             ];
           };
