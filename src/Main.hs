@@ -16,6 +16,8 @@ data SomeState =
 emptyState :: SomeState
 emptyState = SomeState []
 
+-- Could be instead:
+--
 -- data State'
 --   = State'
 --     { state    :: State
@@ -33,14 +35,48 @@ instance Arbitrary SomeState where
 
 instance Arbitrary State where
   arbitrary = oneof
-              [ Open   <$> arbitrary
-              , Closed <$> arbitrary
-              , Final  <$> arbitrary
-              ]
+                [ Open   <$> arbitrary
+                , Closed <$> arbitrary
+                , Final  <$> arbitrary
+                ]
+
+{- Thoughts around state transitions actually doing things!
+
+
+newtype Transition = Transition { mkTransition :: ReadContext -> State -> Maybe State }
+
+data Transition
+  = DoOpen
+  | DoClose
+  | DoFinal
+
+transitions :: [Transition]
+
+
+apply :: ReadContext -> State -> [Transition] -> IO State
+
+
+apply1 rc state t@DoOpen = do
+  let tx = buildOpenTranscation state
+  sendTransition tx
+  pure $ transitionState t state
+
+
+
+- Questions
+  - How could a transition read from the world?
+  - How can a transition do things to the world?
+
+
+-}
+
+
+
+
 
 
 {-
-   TODO:
+TODO:
 
 - [x] Model our state!
 - [x] Think about transitions
@@ -48,7 +84,7 @@ instance Arbitrary State where
 - [x] Make sure we can represent what we want! Step through states?
 - [ ] Maybe some tests
     - [x] Can't get to invalid states?
-    - [ ] Can get to some expected states?
+    - [x] Can get to some expected states?
 
 Things to think about:
   - [ ] Save increments and decrements
